@@ -42,7 +42,7 @@ class LabelTest {
     }
 
     @Test
-    @DisplayName("Should print reverse label for a male")
+    @DisplayName("Should print reverse label for a female")
     void printReverseLabelForAWoman() {
         String firstName = "ABC";
         String lastName = "XYZ";
@@ -51,5 +51,4 @@ class LabelTest {
 
         Assertions.assertEquals(printedLabel, label.printReverse());
     }
-
 }
