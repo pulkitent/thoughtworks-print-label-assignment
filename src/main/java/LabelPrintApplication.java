@@ -1,31 +1,24 @@
-import com.tw.gurgaon.Label;
-
-import java.util.LinkedList;
-
-import static com.tw.gurgaon.Salutation.Mr;
+import com.tw.gurgaon.*;
 
 class LabelPrintApplication {
     public static void main(String s[]) {
+        Name name = new Name("Pulkit", "Gupta");
+        Address address = new Address("10-C", "Delhi", "India");
+        Guest guest = new Guest(name, Gender.MALE, 23, address);
 
-        Label label1 = new Label("Pulkit", "Gupta", Mr);
-        Label label2 = new Label("Pulkit", "Gupta", Mr);
-        Label label3 = new Label("Pulkit", "Gupta", Mr);
-        Label label4 = new Label("Pulkit", "Gupta", Mr);
-        Label label5 = new Label("Pulkit", "Gupta", Mr);
+        Printer printer = new Printer();
+        Label label = new Label(guest);
 
-        LinkedList<Label> labels = new LinkedList<>();
-        labels.add(label1);
-        labels.add(label2);
-        labels.add(label3);
-        labels.add(label4);
-        labels.add(label5);
+        String printedLabel = printer.print(label, Template.ORIGINAL);
+        System.out.println(printedLabel);
 
-        for (Label label : labels) {
-            System.out.println(label.print());
-        }
+        String printedLabelInReverse = printer.print(label, Template.ORIGINALREVERSE);
+        System.out.println(printedLabelInReverse);
 
-        for (Label label : labels) {
-            System.out.println(label.printReverse());
-        }
+        String anotherPrintedLabel = printer.print(label, Template.WITHCOUNTRY);
+        System.out.println(anotherPrintedLabel);
+
+        String anotherPrintedLabelWithCountryInReverse = printer.print(label, Template.WITHCOUNTRYREVERSE);
+        System.out.println(anotherPrintedLabelWithCountryInReverse);
     }
 }
