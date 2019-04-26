@@ -1,11 +1,11 @@
 package com.tw.gurgaon;
 
 public enum Template {
-    ORIGINAL("%s %s %s"),
-    ORIGINALREVERSE("%s %s, %s"),
-    WITHCOUNTRY("%s %s %s, %s"),
-    WITHCOUNTRYREVERSE("%s %s, %s, %s");
-    
+    DEFAULT("%s %s %s"),
+    DEFAULTREVERSE("%s %s, %s"),
+    COUNTRY("%s %s %s, %s"),
+    COUNTRYREVERSE("%s %s, %s, %s");
+
     private final String format;
 
     Template(String format) {

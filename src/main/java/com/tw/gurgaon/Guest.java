@@ -4,11 +4,6 @@ public class Guest {
     private final Name name;
     private final Gender gender;
     private final Integer age;
-
-    Address getAddress() {
-        return address;
-    }
-
     private final Address address;
 
     public Guest(Name name, Gender gender, Integer age, Address address) {
@@ -16,6 +11,10 @@ public class Guest {
         this.gender = gender;
         this.age = age;
         this.address = address;
+    }
+
+    Address getAddress() {
+        return address;
     }
 
     Name getName() {

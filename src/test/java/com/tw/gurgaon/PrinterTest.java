@@ -4,64 +4,51 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.LinkedList;
+import java.util.List;
+
 class PrinterTest {
     @Test
-    @DisplayName("Should print original format label for a man")
-    void printLabel() {
-        Name name = new Name("Pulkit", "Gupta");
-        Address address = new Address("10-C", "Delhi", "India");
-        Guest guest = new Guest(name, Gender.MALE, 23, address);
-        Printer printer = new Printer();
-        Label label = new Label(guest);
-        String expectedPrintedLabel = "Mr Pulkit Gupta";
+    @DisplayName("Should print default format label for a man")
+    void printDeafultLabel() {
+        Printer printer = this.createPrinterWithTestData();
 
-        String printedLabel = printer.print(label, Template.ORIGINAL);
+        List<String> printedLabel = printer.printLabels(Template.DEFAULT, new PrintByDefault());
 
-        Assertions.assertEquals(printedLabel, expectedPrintedLabel);
+        Assertions.assertEquals("Mr Pulkit Gupta", printedLabel.get(0));
+        Assertions.assertEquals("Mr Gupta, Pulkit", printedLabel.get(1));
     }
 
     @Test
-    @DisplayName("Should print label in reverse format for a man")
-    void printReverseLabel() {
-        Name name = new Name("Pulkit", "Gupta");
-        Address address = new Address("10-C", "Delhi", "India");
-        Guest guest = new Guest(name, Gender.MALE, 23, address);
-        Printer printer = new Printer();
-        Label label = new Label(guest);
-        String expectedPrintedLabel = "Mr Gupta, Pulkit";
-
-        String printedLabel = printer.print(label, Template.ORIGINALREVERSE);
-
-        Assertions.assertEquals(printedLabel, expectedPrintedLabel);
-    }
-
-    @Test
-    @DisplayName("Should print label with country for a man")
+    @DisplayName("Should print label with country format for a man")
     void printLabelWithCountry() {
-        Name name = new Name("Pulkit", "Gupta");
-        Address address = new Address("10-C", "Delhi", "India");
-        Guest guest = new Guest(name, Gender.MALE, 23, address);
-        Printer printer = new Printer();
-        Label label = new Label(guest);
-        String expectedPrintedLabel = "Mr Pulkit Gupta, India";
+        Printer printer = this.createPrinterWithTestData();
 
-        String printedLabel = printer.print(label, Template.WITHCOUNTRY);
+        List<String> printedLabel = printer.printLabels(Template.DEFAULT, new PrintByCountry("India"));
 
-        Assertions.assertEquals(printedLabel, expectedPrintedLabel);
+        Assertions.assertEquals("Mr Pulkit Gupta, India", printedLabel.get(0));
+        Assertions.assertEquals("Mr Gupta, Pulkit, India", printedLabel.get(1));
     }
 
     @Test
-    @DisplayName("Should print label with country in reverse format for a man")
-    void printReverseLabelWithCountry() {
+    @DisplayName("Should not print label with unavailable country format for a man")
+    void printLabelWithNoCountry() {
+        Printer printer = this.createPrinterWithTestData();
+
+        List<String> printedLabel = printer.printLabels(Template.DEFAULT, new PrintByCountry("USA"));
+
+        Assertions.assertEquals(0, printedLabel.size());
+    }
+
+    private Printer createPrinterWithTestData() {
         Name name = new Name("Pulkit", "Gupta");
         Address address = new Address("10-C", "Delhi", "India");
         Guest guest = new Guest(name, Gender.MALE, 23, address);
-        Printer printer = new Printer();
         Label label = new Label(guest);
-        String expectedPrintedLabel = "Mr Gupta, Pulkit, India";
 
-        String printedLabel = printer.print(label, Template.WITHCOUNTRYREVERSE);
+        List<Label> labels = new LinkedList<>();
+        labels.add(label);
 
-        Assertions.assertEquals(printedLabel, expectedPrintedLabel);
+        return new Printer(labels);
     }
 }
