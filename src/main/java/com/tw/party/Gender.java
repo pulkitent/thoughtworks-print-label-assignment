@@ -1,4 +1,4 @@
-package com.tw.gurgaon;
+package com.tw.party;
 
 public enum Gender {
     MALE("Mr"), FEMALE("Ms");
@@ -8,7 +8,7 @@ public enum Gender {
         this.salutation = salutation;
     }
 
-    public String getSalutation() {
-        return salutation;
+    public Label addSalutation(Label label) {
+        return label.add(salutation);
     }
 }

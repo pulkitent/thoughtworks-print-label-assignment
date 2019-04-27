@@ -1,4 +1,4 @@
-package com.tw.gurgaon;
+package com.tw.party;
 
 public class Name {
     private final String firstName;
@@ -9,11 +9,11 @@ public class Name {
         this.lastName = lastName;
     }
 
-    String getFirstName() {
-        return firstName;
+    Label addFirstName(Label label) {
+        return label.add(firstName);
     }
 
-    String getLastName() {
-        return lastName;
+    Label addLastName(Label label, String separator) {
+        return label.add(lastName + separator);
     }
 }

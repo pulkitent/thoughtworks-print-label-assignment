@@ -1,4 +1,4 @@
-package com.tw.gurgaon;
+package com.tw.party;
 
 public class Address {
     private final String city;
@@ -11,7 +11,12 @@ public class Address {
         Country = country;
     }
 
-    String getCountry() {
-        return Country;
+    Label addCountry(Label label) {
+        String separator = ",";
+        return label.add(separator + Country);
+    }
+
+    boolean isFrom(String country) {
+        return Country.equals(country);
     }
 }
