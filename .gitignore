@@ -8,3 +8,4 @@ gradlew.bat
 build/
 .gradle/
 .DS_Store
+.class
