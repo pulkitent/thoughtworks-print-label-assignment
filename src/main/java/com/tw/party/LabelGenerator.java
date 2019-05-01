@@ -2,6 +2,7 @@ package com.tw.party;
 
 import java.util.LinkedList;
 import java.util.List;
+import static com.tw.party.Constant.*;
 
 public class LabelGenerator {
     public List<Label> generate(List<Guest> guests) {
@@ -9,7 +10,6 @@ public class LabelGenerator {
         for (Guest guest : guests) {
             Label label = createDefaultLabel(guest);
             Label reverseLabel = createReverseLabel(guest);
-
             labels.add(label);
             labels.add(reverseLabel);
         }
@@ -17,21 +17,19 @@ public class LabelGenerator {
     }
 
     private Label createDefaultLabel(Guest guest) {
-        Label label = new Label("");
+        Label label = new Label(emptyStringSeparator);
         label = guest.addSalutation(label);
         label = guest.addFirstName(label);
-        label = guest.addLastName(label,"");
-        label = guest.addCountry(label);
+        label = guest.addLastName(label, emptyStringSeparator);
 
         return label;
     }
 
     private Label createReverseLabel(Guest guest) {
-        Label label = new Label("");
+        Label label = new Label(emptyStringSeparator);
         label = guest.addSalutation(label);
-        label = guest.addLastName(label,",");
+        label = guest.addLastName(label, commaSeparator);
         label = guest.addFirstName(label);
-        label = guest.addCountry(label);
 
         return label;
     }

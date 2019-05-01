@@ -2,23 +2,23 @@ package com.tw.party;
 
 import java.util.Objects;
 
+import static com.tw.party.Constant.spaceSeparator;
+
 public class Label {
     private String text;
-
-    private static final String separator = " ";
 
     Label(String text) {
         this.text = text;
     }
 
     Label add(String text) {
-        this.text += separator + text;
+        this.text += spaceSeparator + text;
         return this;
     }
 
     @Override
     public String toString() {
-        return "{ " + "Label text = " + text + " }";
+        return text;
     }
 
     @Override

@@ -1,5 +1,7 @@
 package com.tw.party;
 
+import static com.tw.party.Constant.commaSeparator;
+
 public class Address {
     private final String city;
     private final String state;
@@ -12,11 +14,13 @@ public class Address {
     }
 
     Label addCountry(Label label) {
-        String separator = ",";
-        return label.add(separator + Country);
+        return label.add(commaSeparator + Country);
     }
 
     boolean isFrom(String country) {
-        return Country.equals(country);
+        return Country
+                .toLowerCase()
+                .equals(country
+                        .toLowerCase());
     }
 }

@@ -5,8 +5,8 @@ import com.tw.party.Gender;
 import com.tw.party.Guest;
 import com.tw.party.Name;
 
-public class RecordParser {
-    public static Guest createRecord(String line) {
+class RecordParser {
+    static Guest createRecord(String line) {
         String[] records = line.split(",");
         if (records.length != 7)
             throw new RuntimeException("Record must be of size 7");

@@ -9,18 +9,6 @@ import java.util.List;
 
 class GuestTest {
     @Test
-    @DisplayName("Should add country to a label")
-    void shouldAddCountry() {
-        Guest guest = createTestDataGuest();
-        Label label = new Label("");
-        Label expectedLabel = new Label(" ,USA");
-
-        label = guest.addCountry(label);
-
-        Assertions.assertEquals(expectedLabel, label);
-    }
-
-    @Test
     @DisplayName("Should add first name to a label")
     void shouldAddFirstName() {
         Guest guest = createTestDataGuest();

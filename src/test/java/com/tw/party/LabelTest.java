@@ -18,7 +18,7 @@ class LabelTest {
     @DisplayName("Should return given format string representation of label")
     void shouldReturnString() {
         Label label = new Label("");
-        String expectedLabelString = "{ " + "Label text = " + " ABC" + " }";
+        String expectedLabelString = " ABC";
 
         Assertions.assertTrue(expectedLabelString.equals(label.add("ABC").toString()));
     }
