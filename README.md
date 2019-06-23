@@ -57,3 +57,4 @@ Mr Smith, John, Bangladesh, 20
 Ms Doe, Jane, Bangladesh, 30
 
 
+PS - trunk based development was followed with proper TDD approach. And was hosting this project on gitlab but in the end migrated here on Github.
