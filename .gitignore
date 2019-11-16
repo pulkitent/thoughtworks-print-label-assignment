@@ -2,9 +2,6 @@
 out/
 
 #Gradle
-gradle/
-gradlew
-gradlew.bat
 build/
 .gradle/
 .DS_Store
